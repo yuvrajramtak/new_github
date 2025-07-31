@@ -1,525 +1,654 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AutoMart - Find Your Dream Car</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet" />
-  <style>
-    /* Reset & basics */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f9f9f9;
-      color: #222;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Container */
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    /* Header */
-    header.header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      z-index: 1000;
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 60px;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 1rem;
-    }
-
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-weight: 700;
-      font-size: 1.5rem;
-      user-select: none;
-    }
-
-    .logo svg {
-      width: 30px;
-      height: 30px;
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #007cf0, #00dfd8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* Desktop nav */
-    nav.nav {
-      display: flex;
-    }
-
-    nav.nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav.nav ul li a {
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.5rem 0;
-      transition: color 0.3s ease;
-    }
-
-    nav.nav ul li a:hover {
-      color: #007cf0;
-    }
-
-    /* Hamburger */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      cursor: pointer;
-      background: none;
-      border: none;
-      padding: 0;
-      width: 30px;
-      height: 25px;
-      justify-content: center;
-    }
-
-    .hamburger span {
-      display: block;
-      height: 3px;
-      background: #222;
-      border-radius: 2px;
-    }
-
-    /* Side menu */
-    .side-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 100%;
-      max-width: 320px;
-      height: 100vh;
-      background: #fff;
-      box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
-      padding: 2rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-      transition: right 0.3s ease;
-      z-index: 1101;
-    }
-
-    .side-menu.active {
-      right: 0;
-    }
-
-    .side-menu nav ul {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      padding-left: 0;
-      margin: 0;
-    }
-
-    .side-menu nav li a {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #222;
-      padding: 0.5rem 0;
-      display: block;
-      transition: color 0.3s ease;
-    }
-
-    .side-menu nav li a:hover {
-      color: #007cf0;
-    }
-
-    .side-menu .close-btn {
-      align-self: flex-end;
-      font-size: 2.5rem;
-      font-weight: 700;
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: #222;
-      user-select: none;
-      line-height: 1;
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      nav.nav {
-        display: none;
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AutoMart - Find Your Dream Car</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Reset & basics */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
       }
 
-      .hamburger {
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f9f9f9;
+        color: #222;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* Container */
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      /* Header */
+      header.header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+
+      .nav-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        font-weight: 700;
+        font-size: 1.5rem;
+        user-select: none;
+      }
+
+      .logo svg {
+        width: 30px;
+        height: 30px;
+      }
+
+      .gradient-text {
+        background: linear-gradient(90deg, #007cf0, #00dfd8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      /* Desktop nav */
+      nav.nav {
         display: flex;
       }
-    }
 
-    /* Main content */
-    main {
-      padding: 80px 1rem 2rem;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
+      nav.nav ul {
+        list-style: none;
+        display: flex;
+        gap: 2rem;
+      }
 
-    section {
-      margin-bottom: 6rem;
-    }
+      nav.nav ul li a {
+        font-weight: 600;
+        font-size: 1rem;
+        padding: 0.5rem 0;
+        transition: color 0.3s ease;
+      }
 
-    section h1,
-    section h2 {
-      margin-bottom: 1rem;
-      font-weight: 700;
-      color: #007cf0;
-    }
+      nav.nav ul li a:hover {
+        color: #007cf0;
+      }
 
-    section p {
-      font-size: 1.1rem;
-      line-height: 1.6;
-      color: #444;
-    }
+      /* Hamburger */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        width: 30px;
+        height: 25px;
+        justify-content: center;
+      }
 
-    /* Table styles */
-    table {
-      width: 100%;
-      margin: 1rem 0;
-      border-collapse: collapse;
-    }
+      .hamburger span {
+        display: block;
+        height: 3px;
+        background: #222;
+        border-radius: 2px;
+      }
 
-    table th,
-    table td {
-      padding: 1rem;
-      text-align: left;
-      border: 1px solid #ddd;
-    }
+      /* Side menu */
+      .side-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        max-width: 320px;
+        height: 100vh;
+        background: #fff;
+        box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+        padding: 2rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        transition: right 0.3s ease;
+        z-index: 1101;
+      }
 
-    table th {
-      background-color: #007cf0;
-      color: #fff;
-      font-weight: 600;
-    }
+      .side-menu.active {
+        right: 0;
+      }
 
-    table tr:nth-child(even) {
-      background-color: #f4f4f4;
-    }
+      .side-menu nav ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding-left: 0;
+        margin: 0;
+      }
 
-    table tr:hover {
-      background-color: #e9e9e9;
-    }
+      .side-menu nav li a {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #222;
+        padding: 0.5rem 0;
+        display: block;
+        transition: color 0.3s ease;
+      }
 
-     #car-form-section {
-    background: #f0f9f9;
-    border: 1px solid #ccc;
-    padding: 2rem;
-    border-radius: 10px;
-    margin-top: 4rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
-  }
+      .side-menu nav li a:hover {
+        color: #007cf0;
+      }
 
-  #car-form-section h2 {
-    font-size: 1.8rem;
-    font-weight: 600;
-    text-align: center;
-  }
+      .side-menu .close-btn {
+        align-self: flex-end;
+        font-size: 2.5rem;
+        font-weight: 700;
+        border: none;
+        background: none;
+        cursor: pointer;
+        color: #222;
+        user-select: none;
+        line-height: 1;
+      }
 
-  #carInquiryForm {
-    max-width: 600px;
-    margin: 0 auto;
-  }
+      /* Responsive */
+      @media (max-width: 768px) {
+        nav.nav {
+          display: none;
+        }
 
-  .form-group {
-    margin-bottom: 1.2rem;
-  }
+        .hamburger {
+          display: flex;
+        }
+      }
 
-  .form-group label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: 500;
-    color: #333;
-  }
+      /* Main content */
+      main {
+        padding: 80px 1rem 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+      }
 
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 0.75rem;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
-  }
+      section {
+        margin-bottom: 6rem;
+      }
 
-  .form-group input:focus,
-  .form-group textarea:focus {
-    border-color: #00b894;
-    outline: none;
-  }
+      section h1,
+      section h2 {
+        margin-bottom: 1rem;
+        font-weight: 700;
+        color: #007cf0;
+      }
 
-  button[type="submit"] {
-    background-color: #00b894;
-    color: #fff;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    display: block;
-    margin: 0 auto;
-    transition: background 0.3s ease;
-  }
+      section p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #444;
+      }
 
-  button[type="submit"]:hover {
-    background-color: #019875;
-  }
+      /* Table styles */
+      table {
+        width: 100%;
+        margin: 1rem 0;
+        border-collapse: collapse;
+      }
 
-  @media (max-width: 600px) {
-    #car-form-section {
-      padding: 1.5rem;
-    }
+      table th,
+      table td {
+        padding: 1rem;
+        text-align: left;
+        border: 1px solid #ddd;
+      }
 
-    #car-form-section h2 {
-      font-size: 1.5rem;
-    }
-  }
+      table th {
+        background-color: #007cf0;
+        color: #fff;
+        font-weight: 600;
+      }
 
-   .footer-by-aniket {
-      background-color: #222;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-      font-size: 1rem;
-      margin-top: 4rem;
-    }
+      table tr:nth-child(even) {
+        background-color: #f4f4f4;
+      }
 
-    .footer-by-aniket a {
-      color: #00dfd8;
-      font-weight: 600;
-    }
+      table tr:hover {
+        background-color: #e9e9e9;
+      }
 
-    .footer-by-aniket p {
-      margin-bottom: 0.5rem;
-    }
-  </style>
-</head>
+      #car-form-section {
+        background: #f0f9f9;
+        border: 1px solid #ccc;
+        padding: 2rem;
+        border-radius: 10px;
+        margin-top: 4rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+      }
 
-<body>
-  <!-- Header -->
-  <header class="header" role="banner">
-    <div class="nav-wrapper">
-      <a href="#" class="logo" aria-label="AutoMart Home">
-        <svg width="30" height="30" viewBox="0 0 15 15" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
-          focusable="false">
-          <path
-            d="M13.84,6.852,12.6,5.7,11.5,3.5a1.05,1.05,0,0,0-.9-.5H4.4a1.05,1.05,0,0,0-.9.5L2.4,5.7,1.16,6.852A.5.5,0,0,0,1,7.219V11.5a.5.5,0,0,0,.5.5h2c.2,0,.5-.2.5-.4V11h7v.5c0,.2.2.5.4.5h2.1a.5.5,0,0,0,.5-.5V7.219A.5.5,0,0,0,13.84,6.852ZM4.5,4h6l1,2h-8ZM5,8.6c0,.2-.3.4-.5.4H2.4C2.2,9,2,8.7,2,8.5V7.4c.1-.3.3-.5.6-.4l2,.4c.2,0,.4.3.4.5Zm8-.1c0,.2-.2.5-.4.5H10.5c-.2,0-.5-.2-.5-.4V7.9c0-.2.2-.5.4-.5l2-.4c.3-.1.5.1.6.4Z"
-            fill="#222" stroke="#666" stroke-width="0.4" />
-        </svg>
-        <span class="gradient-text">AutoMart by Yuvraj</span>
-      </a>
+      #car-form-section h2 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        text-align: center;
+      }
 
-      <nav class="nav" role="navigation" aria-label="Primary navigation">
+      #carInquiryForm {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .form-group {
+        margin-bottom: 1.2rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: #333;
+      }
+
+      .form-group input,
+      .form-group textarea {
+        width: 100%;
+        padding: 0.75rem;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-group input:focus,
+      .form-group textarea:focus {
+        border-color: #00b894;
+        outline: none;
+      }
+
+      button[type="submit"] {
+        background-color: #00b894;
+        color: #fff;
+        padding: 0.75rem 2rem;
+        border: none;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        display: block;
+        margin: 0 auto;
+        transition: background 0.3s ease;
+      }
+
+      button[type="submit"]:hover {
+        background-color: #019875;
+      }
+
+      @media (max-width: 600px) {
+        #car-form-section {
+          padding: 1.5rem;
+        }
+
+        #car-form-section h2 {
+          font-size: 1.5rem;
+        }
+      }
+
+      .footer-by-aniket {
+        background-color: #222;
+        color: #fff;
+        padding: 2rem 1rem;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      .footer-by-aniket a {
+        color: #00dfd8;
+        font-weight: 600;
+      }
+
+      .footer-by-aniket p {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-contact {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        align-items: start;
+        gap: 30px;
+        background-color: #222;
+        color: white;
+        padding: 30px 0 30px 0;
+        border-bottom: 1px solid #fff;
+      }
+      .footer-links {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+      }
+
+      .footer-map iframe {
+        width: 400px;
+        height: auto;
+      }
+      .footer-address p span {
+        font-weight: 500;
+      }
+
+      .footer-logo {
+        font-size: 1.5rem;
+        font-weight: 600;
+      }
+
+      @media (max-width: 512px) {
+        .footer-contact {
+          justify-content: start;
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="header" role="banner">
+      <div class="nav-wrapper">
+        <a href="#" class="logo" aria-label="AutoMart Home">
+          <svg
+            width="30"
+            height="30"
+            viewBox="0 0 15 15"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path
+              d="M13.84,6.852,12.6,5.7,11.5,3.5a1.05,1.05,0,0,0-.9-.5H4.4a1.05,1.05,0,0,0-.9.5L2.4,5.7,1.16,6.852A.5.5,0,0,0,1,7.219V11.5a.5.5,0,0,0,.5.5h2c.2,0,.5-.2.5-.4V11h7v.5c0,.2.2.5.4.5h2.1a.5.5,0,0,0,.5-.5V7.219A.5.5,0,0,0,13.84,6.852ZM4.5,4h6l1,2h-8ZM5,8.6c0,.2-.3.4-.5.4H2.4C2.2,9,2,8.7,2,8.5V7.4c.1-.3.3-.5.6-.4l2,.4c.2,0,.4.3.4.5Zm8-.1c0,.2-.2.5-.4.5H10.5c-.2,0-.5-.2-.5-.4V7.9c0-.2.2-.5.4-.5l2-.4c.3-.1.5.1.6.4Z"
+              fill="#222"
+              stroke="#666"
+              stroke-width="0.4"
+            />
+          </svg>
+          <span class="gradient-text">AutoMart by Yuvraj</span>
+        </a>
+
+        <nav class="nav" role="navigation" aria-label="Primary navigation">
+          <ul>
+            <li><a href="#hero" class="nav-link">Home</a></li>
+            <li><a href="#inventory" class="nav-link">Inventory</a></li>
+            <li><a href="#sell" class="nav-link">Sell Your Car</a></li>
+            <li><a href="#financing" class="nav-link">Financing</a></li>
+            <li><a href="#about" class="nav-link">About</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="sideMenu"
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Side Menu -->
+    <aside
+      class="side-menu"
+      id="sideMenu"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="sideMenuLabel"
+    >
+      <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">
+        ×
+      </button>
+      <nav role="navigation" aria-label="Mobile navigation">
         <ul>
-          <li><a href="#hero" class="nav-link">Home</a></li>
-          <li><a href="#inventory" class="nav-link">Inventory</a></li>
-          <li><a href="#sell" class="nav-link">Sell Your Car</a></li>
-          <li><a href="#financing" class="nav-link">Financing</a></li>
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#hero" class="side-nav-link">Home</a></li>
+          <li><a href="#inventory" class="side-nav-link">Inventory</a></li>
+          <li><a href="#sell" class="side-nav-link">Sell Your Car</a></li>
+          <li><a href="#financing" class="side-nav-link">Financing</a></li>
+          <li><a href="#about" class="side-nav-link">About</a></li>
+          <li><a href="#contact" class="side-nav-link">Contact</a></li>
         </ul>
       </nav>
+    </aside>
 
-      <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="sideMenu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
+    <!-- Main Content -->
+    <main>
+      <section id="inventory">
+        <h1>Our Car Inventory</h1>
+        <p>
+          Explore our wide range of cars available for sale, including the
+          latest models and top brands.
+        </p>
+        <!-- Car Inventory Table - Meghraj has added the table -->
+        <table>
+          <caption style="color: red; font-size: 30px">
+            Car Inventory by Meghraj Hamade
+          </caption>
+          <thead>
+            <tr>
+              <th>Car Model</th>
+              <th>Year</th>
+              <th>Price</th>
+              <th>Location</th>
+              <th>Contact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Toyota Corolla</td>
+              <td>2022</td>
+              <td>$25,000</td>
+              <td>New York</td>
+              <td><a href="mailto:sales@automart.com">Email</a></td>
+            </tr>
+            <tr>
+              <td>Honda Civic</td>
+              <td>2021</td>
+              <td>$22,000</td>
+              <td>Los Angeles</td>
+              <td><a href="mailto:sales@automart.com">Email</a></td>
+            </tr>
+            <tr>
+              <td>Ford Mustang</td>
+              <td>2020</td>
+              <td>$35,000</td>
+              <td>Miami</td>
+              <td><a href="mailto:sales@automart.com">Email</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+    <hr />
+    <!-- Car Inquiry Form - Created by Mangesh Pawar -->
+    <section id="car-form-section">
+      <h2 style="text-align: center; color: #007cf0; font-size: 40px">
+        Form Created by Mangesh
+      </h2>
+      <h2 style="color: #00b894; margin-bottom: 1rem">
+        Interested in a Car? Contact Us!
+      </h2>
+      <form id="carInquiryForm">
+        <div class="form-group">
+          <label for="fullName">Full Name:</label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            required
+            placeholder="Enter your name"
+          />
+        </div>
 
-  <!-- Side Menu -->
-  <aside class="side-menu" id="sideMenu" aria-hidden="true" role="dialog" aria-modal="true"
-    aria-labelledby="sideMenuLabel">
-    <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">×</button>
-    <nav role="navigation" aria-label="Mobile navigation">
-      <ul>
-        <li><a href="#hero" class="side-nav-link">Home</a></li>
-        <li><a href="#inventory" class="side-nav-link">Inventory</a></li>
-        <li><a href="#sell" class="side-nav-link">Sell Your Car</a></li>
-        <li><a href="#financing" class="side-nav-link">Financing</a></li>
-        <li><a href="#about" class="side-nav-link">About</a></li>
-        <li><a href="#contact" class="side-nav-link">Contact</a></li>
-      </ul>
-    </nav>
-  </aside>
+        <div class="form-group">
+          <label for="email">Email Address:</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            placeholder="Enter your email"
+          />
+        </div>
 
-  <!-- Main Content -->
-  <main>
-    <section id="inventory">
-      <h1>Our Car Inventory</h1>
-      <p>Explore our wide range of cars available for sale, including the latest models and top brands.</p>
-      <!-- Car Inventory Table - Meghraj has added the table -->
-      <table>
-        <caption style="color: red; font-size: 30px;">Car Inventory by Meghraj Hamade</caption>
-        <thead>
-          <tr>
-            <th>Car Model</th>
-            <th>Year</th>
-            <th>Price</th>
-            <th>Location</th>
-            <th>Contact</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Toyota Corolla</td>
-            <td>2022</td>
-            <td>$25,000</td>
-            <td>New York</td>
-            <td><a href="mailto:sales@automart.com">Email</a></td>
-          </tr>
-          <tr>
-            <td>Honda Civic</td>
-            <td>2021</td>
-            <td>$22,000</td>
-            <td>Los Angeles</td>
-            <td><a href="mailto:sales@automart.com">Email</a></td>
-          </tr>
-          <tr>
-            <td>Ford Mustang</td>
-            <td>2020</td>
-            <td>$35,000</td>
-            <td>Miami</td>
-            <td><a href="mailto:sales@automart.com">Email</a></td>
-          </tr>
-        </tbody>
-      </table>
+        <div class="form-group">
+          <label for="carModel">Car Model Interested In:</label>
+          <input
+            type="text"
+            id="carModel"
+            name="carModel"
+            required
+            placeholder="e.g. Honda Civic"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Your Budget ($):</label>
+          <input
+            type="number"
+            id="budget"
+            name="budget"
+            min="1000"
+            step="100"
+            placeholder="e.g. 25000"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Additional Message:</label>
+          <textarea
+            id="message"
+            name="message"
+            rows="4"
+            placeholder="Any special requests or details..."
+          ></textarea>
+        </div>
+
+        <button type="submit">Submit Inquiry</button>
+      </form>
     </section>
-  </main>
-  <hr>
-  <!-- Car Inquiry Form - Created by Mangesh Pawar -->
-  <section id="car-form-section">
-  <h2 style="text-align: center; color: #007cf0; font-size: 40px;">Form Created by Mangesh</h2>
-  <h2 style="color: #00b894; margin-bottom: 1rem;">Interested in a Car? Contact Us!</h2>
-  <form id="carInquiryForm">
-    <div class="form-group">
-      <label for="fullName">Full Name:</label>
-      <input type="text" id="fullName" name="fullName" required placeholder="Enter your name">
+
+    <h2 style="text-align: center; color: brown; font-size: 30px">
+      Footer Created by Aniket
+    </h2>
+    <div class="footer-contact">
+      <div class="footer-address">
+        <p class="gradient-text footer-logo">Automart by Yuvraj</p>
+        <p><span>Address</span> : Office 311 , Global Trade Hub, Kharadi</p>
+        <p><span>Phone</span> : 000000000</p>
+        <p><span>Email</span> :automart@gmail.com</p>
+      </div>
+      <div class="footer-links">
+        <a href="#hero" class="nav-link">Home</a>
+        <a href="#inventory" class="nav-link">Inventory</a>
+        <a href="#sell" class="nav-link">Sell Your Car</a>
+        <a href="#financing" class="nav-link">Financing</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <div class="footer-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.455999041629!2d73.94700722501393!3d18.55346963254653!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c3c4ea36a8f7%3A0xf585434dc33ce581!2sGLOBAL%20BUSINESS%20HUB%2C%20EON%20Free%20Zone%2C%20Kharadi%2C%20Pune%2C%20Maharashtra%20411014!5e0!3m2!1sen!2sin!4v1753966325530!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
+    </div>
+    <div class="footer-by-aniket">
+      <p>Website designed & built with ❤️ by <strong>Aniket</strong></p>
+      <p>All rights reserved © 2025 AutoMart</p>
+      <p><a href="#top">Back to top</a></p>
     </div>
 
-    <div class="form-group">
-      <label for="email">Email Address:</label>
-      <input type="email" id="email" name="email" required placeholder="Enter your email">
-    </div>
+    <script>
+      // Select DOM elements
+      const hamburger = document.getElementById("hamburger");
+      const sideMenu = document.getElementById("sideMenu");
+      const closeMenuBtn = document.getElementById("closeMenuBtn");
 
-    <div class="form-group">
-      <label for="carModel">Car Model Interested In:</label>
-      <input type="text" id="carModel" name="carModel" required placeholder="e.g. Honda Civic">
-    </div>
+      // Open side menu
+      hamburger.addEventListener("click", () => {
+        sideMenu.classList.add("active");
+        sideMenu.setAttribute("aria-hidden", "false");
+        hamburger.setAttribute("aria-expanded", "true");
+        // Set focus on close button for accessibility
+        closeMenuBtn.focus();
+        // Prevent body scrolling when menu open
+        document.body.style.overflow = "hidden";
+      });
 
-    <div class="form-group">
-      <label for="budget">Your Budget ($):</label>
-      <input type="number" id="budget" name="budget" min="1000" step="100" placeholder="e.g. 25000">
-    </div>
-
-    <div class="form-group">
-      <label for="message">Additional Message:</label>
-      <textarea id="message" name="message" rows="4" placeholder="Any special requests or details..."></textarea>
-    </div>
-
-    <button type="submit">Submit Inquiry</button>
-  </form>
-</section>
-<h2 style="text-align: center; color: brown; font-size: 30px;">Footer Created by Aniket</h2>
- <div class="footer-by-aniket">
-    <p>Website designed & built with ❤️ by <strong>Aniket</strong></p>
-    <p>All rights reserved © 2025 AutoMart</p>
-    <p><a href="#top">Back to top</a></p>
-  </div>
-
-
-  <script>
-    // Select DOM elements
-    const hamburger = document.getElementById('hamburger');
-    const sideMenu = document.getElementById('sideMenu');
-    const closeMenuBtn = document.getElementById('closeMenuBtn');
-
-    // Open side menu
-    hamburger.addEventListener('click', () => {
-      sideMenu.classList.add('active');
-      sideMenu.setAttribute('aria-hidden', 'false');
-      hamburger.setAttribute('aria-expanded', 'true');
-      // Set focus on close button for accessibility
-      closeMenuBtn.focus();
-      // Prevent body scrolling when menu open
-      document.body.style.overflow = 'hidden';
-    });
-
-    // Close side menu
-    function closeMenu() {
-      sideMenu.classList.remove('active');
-      sideMenu.setAttribute('aria-hidden', 'true');
-      hamburger.setAttribute('aria-expanded', 'false');
-      // Restore body scroll
-      document.body.style.overflow = '';
-      // Return focus to hamburger button
-      hamburger.focus();
-    }
-
-    closeMenuBtn.addEventListener('click', closeMenu);
-
-    // Close menu when clicking outside (optional)
-    window.addEventListener('click', (e) => {
-      if (
-        sideMenu.classList.contains('active') &&
-        !sideMenu.contains(e.target) &&
-        e.target !== hamburger
-      ) {
-        closeMenu();
+      // Close side menu
+      function closeMenu() {
+        sideMenu.classList.remove("active");
+        sideMenu.setAttribute("aria-hidden", "true");
+        hamburger.setAttribute("aria-expanded", "false");
+        // Restore body scroll
+        document.body.style.overflow = "";
+        // Return focus to hamburger button
+        hamburger.focus();
       }
-    });
 
-    // Close menu when a side nav link is clicked (for single page nav)
-    const sideNavLinks = sideMenu.querySelectorAll('a');
-    sideNavLinks.forEach((link) =>
-      link.addEventListener('click', () => {
-        closeMenu();
-      })
-    );
+      closeMenuBtn.addEventListener("click", closeMenu);
 
-    // Keyboard accessibility: close menu on ESC
-    window.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && sideMenu.classList.contains('active')) {
-        closeMenu();
-      }
-    });
-  </script>
-</body>
+      // Close menu when clicking outside (optional)
+      window.addEventListener("click", (e) => {
+        if (
+          sideMenu.classList.contains("active") &&
+          !sideMenu.contains(e.target) &&
+          e.target !== hamburger
+        ) {
+          closeMenu();
+        }
+      });
 
+      // Close menu when a side nav link is clicked (for single page nav)
+      const sideNavLinks = sideMenu.querySelectorAll("a");
+      sideNavLinks.forEach((link) =>
+        link.addEventListener("click", () => {
+          closeMenu();
+        })
+      );
+
+      // Keyboard accessibility: close menu on ESC
+      window.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sideMenu.classList.contains("active")) {
+          closeMenu();
+        }
+      });
+    </script>
+  </body>
 </html>
