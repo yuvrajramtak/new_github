@@ -235,6 +235,80 @@
     table tr:hover {
       background-color: #e9e9e9;
     }
+
+     #car-form-section {
+    background: #f0f9f9;
+    border: 1px solid #ccc;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-top: 4rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  }
+
+  #car-form-section h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  #carInquiryForm {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .form-group {
+    margin-bottom: 1.2rem;
+  }
+
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #333;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #00b894;
+    outline: none;
+  }
+
+  button[type="submit"] {
+    background-color: #00b894;
+    color: #fff;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background 0.3s ease;
+  }
+
+  button[type="submit"]:hover {
+    background-color: #019875;
+  }
+
+  @media (max-width: 600px) {
+    #car-form-section {
+      padding: 1.5rem;
+    }
+
+    #car-form-section h2 {
+      font-size: 1.5rem;
+    }
+  }
   </style>
 </head>
 
@@ -331,6 +405,40 @@
     </section>
   </main>
   <hr>
+  <!-- Car Inquiry Form - Created by Mangesh Pawar -->
+  <section id="car-form-section">
+  <h2 style="text-align: center; color: #007cf0; font-size: 40px;">Form Created by Mangesh</h2>
+  <h2 style="color: #00b894; margin-bottom: 1rem;">Interested in a Car? Contact Us!</h2>
+  <form id="carInquiryForm">
+    <div class="form-group">
+      <label for="fullName">Full Name:</label>
+      <input type="text" id="fullName" name="fullName" required placeholder="Enter your name">
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address:</label>
+      <input type="email" id="email" name="email" required placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+      <label for="carModel">Car Model Interested In:</label>
+      <input type="text" id="carModel" name="carModel" required placeholder="e.g. Honda Civic">
+    </div>
+
+    <div class="form-group">
+      <label for="budget">Your Budget ($):</label>
+      <input type="number" id="budget" name="budget" min="1000" step="100" placeholder="e.g. 25000">
+    </div>
+
+    <div class="form-group">
+      <label for="message">Additional Message:</label>
+      <textarea id="message" name="message" rows="4" placeholder="Any special requests or details..."></textarea>
+    </div>
+
+    <button type="submit">Submit Inquiry</button>
+  </form>
+</section>
+
 
 
   <script>
