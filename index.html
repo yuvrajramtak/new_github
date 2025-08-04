@@ -4,11 +4,98 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>AutoMart - Find Your Dream Car</title>
+
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <style>
+
+    <!-- AOS CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+      rel="stylesheet"
+    />
+<style>
+  /* ...[your existing styles above]... */
+
+  /* ENHANCED BOX-SHADOWS AND HOVER STYLES */
+
+  /* All visually important white boxes, such as sections and tables */
+  section,
+  #car-form-section,
+  table {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    transition: box-shadow 0.3s cubic-bezier(.23,1.15,.2,1);
+    background: #fff;
+  }
+
+  section:hover,
+  #car-form-section:hover {
+    box-shadow: 0 8px 20px rgba(0,124,240,0.12), 0 2px 8px rgba(0,0,0,0.07);
+  }
+
+  /* Table hover improvements */
+  table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  table th, table td {
+    border: none;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  table tr {
+    transition: box-shadow 0.2s, background 0.2s;
+  }
+  table tr:hover {
+    background: #e0f3ff;
+    box-shadow: 0 2px 8px rgba(0,124,240,0.10);
+  }
+
+  /* Form fields with more focus glow */
+  .form-group input,
+  .form-group textarea {
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04) inset;
+    background: #fdfdfd;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus {
+    border-color: #00b894;
+    box-shadow: 0 0 0 2px rgba(0,184,148,0.15),0 1px 2px rgba(0,0,0,0.04) inset;
+    background: #fff;
+  }
+
+  /* Button hover effect */
+  button[type="submit"] {
+    transition: background 0.3s, box-shadow 0.3s, transform 0.25s;
+    box-shadow: 0 2px 6px rgba(0,184,148,0.08);
+  }
+  button[type="submit"]:hover {
+    background-color: #019875;
+    box-shadow: 0 8px 24px rgba(0,184,148,0.18), 0 2px 6px rgba(0,184,148,0.10);
+    transform: translateY(-2px) scale(1.03);
+  }
+
+  /* Footer card effect */
+  .footer-contact {
+    box-shadow: 0 4px 14px rgba(0,0,0,0.10);
+    border-radius: 10px;
+    transition: box-shadow 0.3s;
+  }
+  .footer-contact:hover {
+    box-shadow: 0 8px 40px rgba(0,184,148,0.14), 0 4px 14px rgba(0,0,0,0.12);
+  }
+
+  /* Responsive tweaks for cards */
+  @media (max-width: 600px) {
+    section, #car-form-section, .footer-contact, table {
+      box-shadow: 0 1.5px 7px rgba(0,0,0,0.10);
+    }
+  }
+
       /* Reset & basics */
       * {
         box-sizing: border-box;
@@ -366,14 +453,14 @@
           padding: 20px;
         }
       }
-    </style>
+    </style> 
   </head>
 
   <body>
     <!-- Header -->
-    <header class="header" role="banner">
+    <header class="header" role="banner" data-aos="fade-down">
       <div class="nav-wrapper">
-        <a href="#" class="logo" aria-label="AutoMart Home">
+        <a href="#" class="logo" aria-label="AutoMart Home" data-aos="fade-right">
           <svg
             width="30"
             height="30"
@@ -425,6 +512,7 @@
       role="dialog"
       aria-modal="true"
       aria-labelledby="sideMenuLabel"
+      data-aos="fade-left"
     >
       <button class="close-btn" id="closeMenuBtn" aria-label="Close menu">
         ×
@@ -443,14 +531,14 @@
 
     <!-- Main Content -->
     <main>
-      <section id="inventory">
-        <h1>Our Car Inventory</h1>
-        <p>
-          Explore our wide range of cars available for sale, including the
-          latest models and top brands.
+      <section id="inventory" data-aos="fade-up">
+        <h1 data-aos="fade-right">Our Car Inventory</h1>
+        <p data-aos="fade-left">
+          Explore our wide range of cars available for sale, including the latest
+          models and top brands.
         </p>
-        <!-- Car Inventory Table - Meghraj has added the table -->
-        <table>
+        <!-- Car Inventory Table -->
+        <table data-aos="zoom-in">
           <caption style="color: red; font-size: 30px">
             Car Inventory by Meghraj Hamade
           </caption>
@@ -489,16 +577,22 @@
         </table>
       </section>
     </main>
+
     <hr />
-    <!-- Car Inquiry Form - Created by Mangesh Pawar -->
-    <section id="car-form-section">
-      <h2 style="text-align: center; color: #007cf0; font-size: 40px">
+
+    <!-- Car Inquiry Form -->
+    <section id="car-form-section" data-aos="fade-up">
+      <h2
+        style="text-align: center; color: #007cf0; font-size: 40px"
+        data-aos="zoom-in"
+      >
         Form Created by Mangesh
       </h2>
-      <h2 style="color: #00b894; margin-bottom: 1rem">
+      <h2 style="color: #00b894; margin-bottom: 1rem" data-aos="fade-right">
         Interested in a Car? Contact Us!
       </h2>
-      <form id="carInquiryForm">
+
+      <form id="carInquiryForm" data-aos="fade-left">
         <div class="form-group">
           <label for="fullName">Full Name:</label>
           <input
@@ -558,10 +652,14 @@
       </form>
     </section>
 
-    <h2 style="text-align: center; color: brown; font-size: 30px">
+    <h2
+      style="text-align: center; color: brown; font-size: 30px"
+      data-aos="fade-up"
+    >
       Footer Created by Aniket
     </h2>
-    <div class="footer-contact">
+
+    <div class="footer-contact" data-aos="fade-up">
       <div class="footer-address">
         <p class="gradient-text footer-logo">Automart by Yuvraj</p>
         <p><span>Address</span> : Office 311 , Global Trade Hub, Kharadi</p>
@@ -588,11 +686,22 @@
         ></iframe>
       </div>
     </div>
-    <div class="footer-by-aniket">
+
+    <div class="footer-by-aniket" data-aos="fade-up">
       <p>Website designed & built with ❤️ by <strong>Aniket</strong></p>
       <p>All rights reserved © 2025 AutoMart</p>
       <p><a href="#top">Back to top</a></p>
     </div>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+    </script>
+
     <script>
       // Select DOM elements
       const hamburger = document.getElementById("hamburger");
